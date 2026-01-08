@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 茶语交互博物馆</title>
+    <style>
+        /* 基础样式 + 茶文化纹理背景 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            background-color: #f8fffa;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d0e8d0' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            color: #1a3d1a;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 0 1rem;
+        }
+        
+        /* 导航菜单优化：增加中式边框和阴影层次 */
+        .nav-menu {
+            background-color: rgba(255, 255, 255, 0.98);
+            padding: 1.2rem 0;
+            box-shadow: 0 3px 15px rgba(26, 61, 26, 0.15);
+            border-bottom: 1px solid #e8f5e8;
+            margin-bottom: 2rem;
+        }
+        
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 3.5rem;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: #1a3d1a;
+            font-weight: 500;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        /* 导航链接hover效果：中式下划线+背景渐变 */
+        .nav-menu a::after {
+            content: "";
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #1a3d1a;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover {
+            background: linear-gradient(120deg, #e8f5e8 0%, #d0e8d0 100%);
+            color: #1a3d1a;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 60%;
+        }
+        
+        .nav-menu a.active {
+            background-color: #1a3d1a;
+            color: #f8fffa;
+            box-shadow: 0 2px 8px rgba(26, 61, 26, 0.2);
+        }
+        
+        .nav-menu a.active::after {
+            width: 60%;
+            background-color: #f8fffa;
+        }
+        
+        /* 顶部装饰：中式茶元素分隔线 */
+        .top-decoration {
+            text-align: center;
+            margin: 1rem 0;
+        }
+        
+        .top-decoration i {
+            font-size: 1.5rem;
+            color: #2d5a2d;
+            margin: 0 1rem;
+        }
+        
+        .top-decoration hr {
+            display: inline-block;
+            width: 200px;
+            border: none;
+            border-top: 1px dashed #2d5a2d;
+            vertical-align: middle;
+            opacity: 0.5;
+        }
+        
+        /* 首页banner区：分层渐变+茶元素装饰 */
+        .banner {
+            flex: 1;
+            background: linear-gradient(135deg, #e8f5e8 0%, #b8d9b8 100%);
+            border-radius: 20px;
+            margin: 1rem auto 3rem;
+            max-width: 1000px;
+            padding: 5rem 2rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(26, 61, 26, 0.18);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* banner装饰元素：茶树叶 */
+        .banner::before {
+            content: "🍃";
+            font-size: 8rem;
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            opacity: 0.1;
+            transform: rotate(-15deg);
+        }
+        
+        .banner::after {
+            content: "🍵";
+            font-size: 8rem;
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            opacity: 0.1;
+            transform: rotate(15deg);
+        }
+        
+        .banner h1 {
+            font-size: 3.5rem;
+            color: #1a3d1a;
+            margin-bottom: 1.8rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            position: relative;
+        }
+        
+        /* 标题装饰下划线 */
+        .banner h1::after {
+            content: "";
+            display: block;
+            width: 180px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #1a3d1a, transparent);
+            margin: 1rem auto 0;
+        }
+        
+        .banner p {
+            font-size: 1.3rem;
+            color: #2d5a2d;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* 中式按钮装饰 */
+        .banner-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: #1a3d1a;
+            color: #f8fffa;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .banner-btn:hover {
+            background-color: #f8fffa;
+            color: #1a3d1a;
+            border-color: #1a3d1a;
+            box-shadow: 0 4px 12px rgba(26, 61, 26, 0.2);
+        }
+        
+        /* 中间装饰 */
+        .middle-decoration {
+            text-align: center;
+            margin: 2rem 0 3rem;
+        }
+        
+        .middle-decoration .decor-text {
+            font-size: 1.1rem;
+            color: #2d5a2d;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+        
+        .middle-decoration hr {
+            width: 300px;
+            border: none;
+            border-top: 2px solid #e8f5e8;
+            margin: 0 auto;
+        }
+        
+        /* 茶文化简介区（调整间距，让页面更协调） */
+        .tea-intro {
+            max-width: 1000px;
+            margin: 0 auto 5rem;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(26, 61, 26, 0.1);
+            border: 1px solid #e8f5e8;
+        }
+        
+        .tea-intro h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #1a3d1a;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .tea-intro h2::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 2px;
+            background-color: #1a3d1a;
+            margin: 0.8rem auto 0;
+        }
+        
+        .tea-intro p {
+            color: #3a6b3a;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* 页脚优化：增加质感 */
+        .footer {
+            text-align: center;
+            padding: 2.5rem 0;
+            background-color: rgba(26, 61, 26, 0.03);
+            margin-top: auto;
+            border-top: 1px solid #e8f5e8;
+        }
+        
+        .footer p {
+            color: #2d5a2d;
+            font-size: 0.95rem;
+        }
+        
+        .footer .copyright {
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        /* 响应式适配：保证手机端显示正常 */
+        @media (max-width: 1240px) {
+            .container {
+                width: 95%;
+                max-width: 1200px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .banner h1 {
+                font-size: 2.2rem;
+            }
+            
+            .banner p {
+                font-size: 1.1rem;
+            }
+            
+            .top-decoration hr {
+                width: 100px;
+            }
+            
+            .banner::before, .banner::after {
+                font-size: 5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部中式装饰 -->
+        <div class="top-decoration">
+            <hr>
+            <i>🍵</i>
+            <hr>
+        </div>
+
+        <!-- 导航菜单：修改茶俗馆、茶艺馆跳转链接 -->
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html" class="active">首页</a></li>
+                <!-- 原：<li><a href="茶俗.html">茶俗馆</a></li> -->
+                <li><a href="chasuguan/index.html">茶俗馆</a></li>
+                <!-- 原：<li><a href="茶艺.html">茶艺馆</a></li> -->
+                <li><a href="chayiguan/index.html">茶艺馆</a></li>
+                <li><a href="teaware.html">茶器馆</a></li>
+            </ul>
+        </nav>
+
+        <!-- 首页banner（按钮指向馆区选择页） -->
+        <div class="banner">
+            <h1>茶语交互博物馆</h1>
+            <p>品茗知味，悟茶懂心 — 探索中国千年茶文化的魅力，感受茶器、茶俗、茶艺的独特韵味</p>
+            <!-- 核心：按钮跳转到馆区选择页 -->
+            <a href="choose-museum.html" class="banner-btn">探索馆区</a>
+        </div>
+
+        <!-- 中间装饰 -->
+        <div class="middle-decoration">
+            <div class="decor-text">一器成名只为茗，悦来客满是茶香</div>
+            <hr>
+        </div>
+
+        <!-- 茶文化简介区 -->
+        <div class="tea-intro" id="tea-intro">
+            <h2>茶文化简介</h2>
+            <p>中国茶文化源远流长，融合了儒、道、佛诸家思想，是中华文化的重要组成部分。从茶器的匠心制作，到茶艺的优雅呈现，再到各地茶俗的独特风情，每一处都彰显着中国人对“茶”的热爱与敬畏。本博物馆旨在通过交互体验的方式，让更多人了解茶文化、爱上茶文化，感受茶带来的宁静与美好。</p>
+        </div>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>茶语交互博物馆 - 品茗知味 · 悟茶懂心</p>
+            <p class="copyright">&copy; 2025 茶语交互博物馆</p>
+        </footer>
+    </div>
+</body>
+</html>

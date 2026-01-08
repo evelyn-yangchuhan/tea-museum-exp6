@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="了解中国六大茶类，品鉴各地名茶风味">
+    <meta name="keywords" content="中国茶,绿茶,红茶,乌龙茶,普洱茶,白茶,黄茶">
+    <title>茶之品 - 茶韵</title>
+    <link rel="icon" href="img/logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .back-btn {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            margin-right: 1rem;
+            margin-left: 2rem;
+            background-color: transparent;
+            color: #1a3d1a;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid #2d5a2d;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .back-btn:hover {
+            background-color: #1a3d1a;
+            color: #f8fffa;
+        }
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .feature-row {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+        .feature-row.reverse {
+            flex-direction: row-reverse;
+        }
+        .feature-img {
+            flex: 1;
+            min-width: 300px;
+        }
+        .feature-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .feature-content {
+            flex: 1.2;
+            min-width: 300px;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .card-img-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px 8px 0 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="teaware.html" class="back-btn">← 返回</a>
+            <a href="index.html" class="logo">
+                <img src="img/logo.png" alt="茶韵Logo">
+                <span class="logo-text">茶韵</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="ceremony.html">茶之道</a></li>
+                <li><a href="origin.html">茶之源</a></li>
+                <li><a href="varieties.html" class="active">茶之品</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-banner">
+        <div class="hero-bg" style="background-image: url('img/tea6.png'); background-size: cover; background-position: center;"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">茶之品</h1>
+            <p class="hero-subtitle">六大茶类，百种名茶，品味中华茶韵</p>
+        </div>
+    </section>
+
+    <section class="section section-cream">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">中国十大名茶</h2>
+                <p class="section-desc">中国名茶荟萃，每一种都承载着独特的地域文化与制茶技艺</p>
+            </div>
+            <div class="feature-row fade-in">
+                <div class="feature-img">
+                    <img src="img/tea-origin.png" alt="西湖龙井">
+                </div>
+                <div class="feature-content">
+                    <h3 class="feature-title">西湖龙井</h3>
+                    <p class="feature-text">西湖龙井产于浙江杭州西湖龙井村周围群山，是中国十大名茶之首。以"色绿、香郁、味甘、形美"四绝著称于世。</p>
+                    <ul class="feature-list">
+                        <li>产地：浙江杭州西湖区</li>
+                        <li>特点：扁平光滑，色泽嫩绿</li>
+                        <li>香气：清香持久，带有豆香</li>
+                        <li>滋味：鲜爽甘醇，回味无穷</li>
+                        <li>冲泡：80-85℃水温，玻璃杯冲泡</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="feature-row reverse fade-in">
+                <div class="feature-img">
+                    <img src="img/tea-varieties.png" alt="武夷岩茶">
+                </div>
+                <div class="feature-content">
+                    <h3 class="feature-title">武夷岩茶</h3>
+                    <p class="feature-text">武夷岩茶产于福建武夷山，是乌龙茶中的极品。因生长在岩石缝隙中，吸收了岩石的矿物质，形成独特的"岩韵"。</p>
+                    <ul class="feature-list">
+                        <li>产地：福建武夷山</li>
+                        <li>特点：条索紧结，色泽乌润</li>
+                        <li>香气：岩骨花香，馥郁持久</li>
+                        <li>滋味：醇厚甘爽，岩韵明显</li>
+                        <li>冲泡：95-100℃水温，紫砂壶或盖碗</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="feature-row fade-in">
+                <div class="feature-content">
+                    <h3 class="feature-title">云南普洱</h3>
+                    <p class="feature-text">普洱茶产于云南省，以大叶种茶树鲜叶为原料，经过特殊工艺制成。分为生茶和熟茶两种，具有"越陈越香"的特点。</p>
+                    <ul class="feature-list">
+                        <li>产地：云南西双版纳、普洱等地</li>
+                        <li>特点：饼、砖、沱等紧压形态</li>
+                        <li>香气：陈香独特，年份越久越醇</li>
+                        <li>滋味：醇厚回甘，生津持久</li>
+                        <li>冲泡：100℃沸水，紫砂壶最佳</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">品茶指南</h2>
+                <p class="section-desc">不同的茶叶有不同的冲泡方法，掌握正确的品饮方式，才能品出茶的真味</p>
+            </div>
+            <div class="cards-grid">
+                <div class="card fade-in">
+                    <div class="card-img-wrapper">
+                        <img src="img/tea10.png" alt="选茶" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">选茶</h3>
+                        <p class="card-text">选茶要看外形、闻香气、品滋味。好茶条索紧结，色泽鲜润，香气纯正，无异味杂质。根据个人口味和体质选择适合的茶类。</p>
+                    </div>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-img-wrapper">
+                        <img src="img/tea8.png" alt="择水" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">择水</h3>
+                        <p class="card-text">"水为茶之母"，好水才能泡出好茶。山泉水最佳，纯净水次之。水质要清澈无异味，硬度适中，才能充分激发茶叶的香气与滋味。</p>
+                    </div>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-img-wrapper">
+                        <img src="img/tea9.png" alt="控温" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">控温</h3>
+                        <p class="card-text">不同茶类需要不同的水温。绿茶80-85℃，乌龙茶95℃，红茶90-95℃，普洱茶100℃。水温过高会烫伤茶叶，过低则香气不足。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-brown">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="section-title">茶之语</h2>
+                <p class="section-desc">"茶有真香，有兰香、有清香、有纯香。表里如一，曰纯香；不生不熟，曰清香；火候均停，曰兰香；雨前神具，曰真香。"<br><br>— 明·许次纾《茶疏》</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="茶韵Logo">
+                    <span>茶韵</span>
+                </div>
+                <p>传承千年茶道文化，品味东方生活美学。让每一杯茶，都成为心灵的栖息之所。</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 茶语交互博物馆</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // 复用你已有的音效文件，不新增任何音频！
+        document.addEventListener('DOMContentLoaded', function() {
+            const clickAudio = new Audio('res/click.mp3');
+            clickAudio.preload = 'auto';
+
+            function playClickSound() {
+                clickAudio.currentTime = 0;
+                clickAudio.play().catch(e => {
+                    if (e.name === 'NotAllowedError') alert('请先点击页面任意位置激活音频播放');
+                });
+            }
+
+            // 给所有可点击元素绑定你的音效
+            document.querySelectorAll('a, .back-btn, .card, .feature-content').forEach(el => {
+                el.addEventListener('click', playClickSound);
+            });
+        });
+    </script>
+</body>
+</html>

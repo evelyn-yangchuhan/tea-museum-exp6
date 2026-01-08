@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茶器馆 - 茶语交互博物馆</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            background-color: #f8fffa;
+            color: #1a3d1a;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* 导航菜单 */
+        .nav-menu {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(26, 61, 26, 0.1);
+        }
+        
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: #1a3d1a;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background-color: #1a3d1a;
+            color: #f8fffa;
+        }
+        
+        /* 主内容区域 */
+        .main-content {
+            flex: 1;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: #1a3d1a;
+        }
+        
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: #2d5a2d;
+            margin-bottom: 3rem;
+        }
+        
+        /* 茶器交互区域 */
+        .teaware-interactive {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem auto;
+            max-width: 1000px;
+        }
+        
+        .teaware-model {
+            flex: 1;
+            position: relative;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(26, 61, 26, 0.1);
+        }
+        
+        .teaware-image {
+            width: 300px;
+            height: 400px;
+            background: linear-gradient(135deg, #e8f5e8, #d0e8d0);
+            border-radius: 10px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        /* 茶器部件 - 可点击区域 */
+        .teaware-part {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            border: 2px dashed #1a3d1a;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #1a3d1a;
+        }
+        
+        .teaware-part:hover {
+            background: rgba(26, 61, 26, 0.1);
+            border: 2px solid #1a3d1a;
+        }
+        
+        .teaware-part.active {
+            background: rgba(26, 61, 26, 0.2);
+            border: 2px solid #1a3d1a;
+            box-shadow: 0 0 10px rgba(26, 61, 26, 0.3);
+        }
+        
+        /* 部件位置 */
+        .part-lid {
+            top: 10%;
+            left: 35%;
+            width: 30%;
+            height: 8%;
+        }
+        
+        .part-body {
+            top: 20%;
+            left: 25%;
+            width: 50%;
+            height: 50%;
+        }
+        
+        .part-handle {
+            top: 30%;
+            left: 10%;
+            width: 15%;
+            height: 30%;
+        }
+        
+        .part-spout {
+            top: 30%;
+            left: 75%;
+            width: 15%;
+            height: 30%;
+        }
+        
+        .part-base {
+            top: 72%;
+            left: 30%;
+            width: 40%;
+            height: 5%;
+        }
+        
+        /* 部件信息显示区域 */
+        .part-info {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(26, 61, 26, 0.1);
+            text-align: left;
+        }
+        
+        .part-info h3 {
+            color: #1a3d1a;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #e8f5e8;
+            padding-bottom: 0.5rem;
+        }
+        
+        .info-default {
+            text-align: center;
+            color: #2d5a2d;
+            font-style: italic;
+        }
+        
+        /* 茶器分类展示 */
+        .teaware-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem auto;
+            max-width: 1000px;
+        }
+        
+        .category-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(26, 61, 26, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            background: #e8f5e8;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a3d1a;
+            font-size: 2rem;
+        }
+        
+        .category-name {
+            font-size: 1.2rem;
+            color: #1a3d1a;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: rgba(26, 61, 26, 0.05);
+            margin-top: auto;
+        }
+        
+        .footer p {
+            color: #2d5a2d;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 1240px) {
+            .container {
+                width: 95%;
+                max-width: 1200px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .teaware-interactive {
+                flex-direction: column;
+            }
+            
+            .teaware-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-menu ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .teaware-image {
+                width: 250px;
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 导航菜单 - 首页链接修正为index.html -->
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="茶俗.html">茶俗馆</a></li>
+                <li><a href="茶艺.html">茶艺馆</a></li>
+                <li><a href="teaware.html" class="active">茶器馆</a></li>
+            </ul>
+        </nav>
+
+        <!-- 主内容区域 -->
+        <main class="main-content">
+            <h1 class="page-title">茶器馆</h1>
+            <p class="page-subtitle">点击茶器部件，了解其用途与制作工艺</p>
+            
+            <!-- 茶器交互区域 -->
+            <div class="teaware-interactive">
+                <!-- 茶器模型 -->
+                <div class="teaware-model">
+                    <div class="teaware-image">
+                        <div class="teaware-part part-lid" data-part="lid">壶盖</div>
+                        <div class="teaware-part part-body" data-part="body">壶身</div>
+                        <div class="teaware-part part-handle" data-part="handle">壶把</div>
+                        <div class="teaware-part part-spout" data-part="spout">壶嘴</div>
+                        <div class="teaware-part part-base" data-part="base">壶底</div>
+                    </div>
+                </div>
+                
+                <!-- 部件信息显示 -->
+                <div class="part-info">
+                    <div class="info-default">
+                        <h3>茶器交互指南</h3>
+                        <p>请点击左侧茶器的任意部件</p>
+                        <p>查看该部件的详细用途解析和工艺展示</p>
+                    </div>
+                    
+                    <!-- 动态内容将由JavaScript填充 -->
+                    <div id="dynamic-content"></div>
+                </div>
+            <div class="category-display">
+              <!-- 保留原来的样式类，只调整卡片顺序（从上到下：茶之道、茶之源、茶之品） -->
+              <h3>茶之板块</h3>
+              <!-- 1. 茶之道（最上方） -->
+              <a href="ceremony.html" style="text-decoration: none; color: inherit;">
+                <div class="category-card">
+                  <div class="category-icon">📜</div>
+                  <div class="category-name">茶之道</div>
+                </div>
+              </a>
+              <!-- 2. 茶之源（中间） -->
+              <a href="origin.html" style="text-decoration: none; color: inherit;">
+                <div class="category-card">
+                  <div class="category-icon">🌱</div>
+                  <div class="category-name">茶之源</div>
+                </div>
+              </a>
+              <!-- 3. 茶之品（最下方） -->
+              <a href="varieties.html" style="text-decoration: none; color: inherit;">
+                <div class="category-card">
+                  <div class="category-icon">🍵</div>
+                  <div class="category-name">茶之品</div>
+                </div>
+              </a>
+            </div>
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>&copy; 2025 茶语交互博物馆</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // MP3音效配置
+            const YOUR_MP3_FILE = 'res/click.mp3'; 
+            const audio = new Audio(YOUR_MP3_FILE);
+            audio.preload = 'auto'; 
+            
+            function playYourMp3Sound() {
+                audio.currentTime = 0;
+                audio.play().catch(e => {
+                    console.log('音效播放提示：', e.message);
+                    if (e.name === 'NotAllowedError') {
+                        alert('请先点击页面任意位置激活音频播放');
+                    }
+                });
+            }
+
+            // 茶器部件交互逻辑
+            const parts = document.querySelectorAll('.teaware-part');
+            const dynamicContent = document.getElementById('dynamic-content');
+            const infoDefault = document.querySelector('.info-default');
+            
+            const partDetails = {
+                'lid': {
+                    title: '壶盖',
+                    usage: '用于覆盖壶口，保持茶汤温度，防止香气散失。',
+                    craft: '壶盖需与壶口紧密贴合，旋转顺畅。常见有压盖、嵌盖、截盖三种形式。制作时需考虑气密性和美观性。',
+                    material: '紫砂、陶瓷、玻璃等'
+                },
+                'body': {
+                    title: '壶身',
+                    usage: '容纳茶叶和热水，是茶叶与水交融的主要空间。',
+                    craft: '壶身造型多样，有圆形、方形、筋纹形等。制作需考虑容量、受热面积和持握舒适度。紫砂壶身具有双重气孔结构，透气性好。',
+                    material: '紫砂、陶瓷、金属等'
+                },
+                'handle': {
+                    title: '壶把',
+                    usage: '用于持握茶壶，倒水时提供支撑。',
+                    craft: '设计需符合人体工学，持握舒适。常见有端把、横把、提梁三种形式。制作时需平衡美观与实用性。',
+                    material: '与壶身相同材质或搭配竹木等'
+                },
+                'spout': {
+                    title: '壶嘴',
+                    usage: '引导茶汤流出，控制水流大小和方向。',
+                    craft: '要求出水流畅、断水利落。造型有直嘴、一弯嘴、二弯嘴、三弯嘴等。内壁需光滑，避免茶渍积累。',
+                    material: '与壶身一体成型'
+                },
+                'base': {
+                    title: '壶底',
+                    usage: '支撑壶身，保持茶壶稳定放置。',
+                    craft: '常见有钉足、圈足、加底三种形式。设计需考虑稳定性与美观，同时便于清洁。',
+                    material: '与壶身相同材质'
+                }
+            };
+            
+            parts.forEach(part => {
+                part.addEventListener('click', function() {
+                    playYourMp3Sound();
+                    const partId = this.getAttribute('data-part');
+                    const detail = partDetails[partId];
+                    
+                    parts.forEach(p => p.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    infoDefault.style.display = 'none';
+                    
+                    dynamicContent.innerHTML = `
+                        <h3>${detail.title}</h3>
+                        <p><strong>主要用途：</strong>${detail.usage}</p>
+                        <p><strong>制作工艺：</strong>${detail.craft}</p>
+                        <p><strong>常见材质：</strong>${detail.material}</p>
+                    `;
+                    dynamicContent.style.display = 'block';
+                });
+            });
+            
+            // 页面加载动画
+            const pageTitle = document.querySelector('.page-title');
+            pageTitle.style.opacity = '0';
+            pageTitle.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                pageTitle.style.transition = 'all 0.8s ease';
+                pageTitle.style.opacity = '1';
+                pageTitle.style.transform = 'translateY(0)';
+            }, 300);
+        });
+    </script>
+</body>
+</html>
