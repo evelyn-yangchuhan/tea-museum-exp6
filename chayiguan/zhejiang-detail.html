@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茶艺馆 - 浙江 · 龙井茶</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 详情页渐显动画 */
+        .container {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 0.2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        /* 详情页样式 */
+        .tea-detail {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            margin: 20px 0;
+        }
+        .tea-detail h3 {
+            color: #1b5e20;
+            font-family: "楷体";
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .tea-img {
+            width: 100%;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 茶艺馆标题+地区标题 -->
+        <div class="header">
+            <h1 style="font-size: 1.2rem; color: #4caf50; margin-bottom: 8px; font-family: '楷体'; letter-spacing: 2px;">茶艺馆</h1>
+            <h2 style="font-size: 2.2rem; color: #1b5e20; font-family: '楷体';">浙江 · 龙井茶</h2>
+            <p class="subtitle">中国十大名茶之首，绿茶代表</p>
+        </div>
+
+        <!-- 浙江龙井茶详情 -->
+        <div class="tea-detail">
+            <img src="https://img1.baidu.com/it/u=4258479329,3792706437&fm=253&fmt=auto&app=138&f=JPEG?w=760&h=304" alt="龙井茶" class="tea-img">
+            <h3>龙井茶核心信息</h3>
+            <ul style="line-height: 2; padding-left: 20px;">
+                <li><strong>产地</strong>：浙江省杭州市西湖区、钱塘区、越城区等；</li>
+                <li><strong>品类</strong>：绿茶（不发酵）；</li>
+                <li><strong>特点</strong>：色绿、香郁、味甘、形美，茶汤清澈嫩绿，滋味鲜爽回甘；</li>
+                <li><strong>采摘时间</strong>：明前茶（清明节前）为上品，雨前茶（谷雨前）次之；</li>
+                <li><strong>冲泡建议</strong>：水温80-85℃，茶水比1:50，玻璃杯冲泡，可观赏茶叶舒展。</li>
+            </ul>
+        </div>
+
+        <!-- 返回茶艺馆首页按钮 -->
+        <a href="index.html" class="btn" style="margin: 0 auto; display: block; width: fit-content;">返回茶艺馆首页</a>
+    </div>
+</body>
+</html>

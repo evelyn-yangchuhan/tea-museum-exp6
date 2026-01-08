@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茶艺馆 - 福建 · 铁观音</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "微软雅黑", "楷体", sans-serif;
+        }
+        body {
+            background-color: #f5f9f5;
+            background-image: radial-gradient(#e8f5e9 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #2d3b2d;
+            line-height: 1.6;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px 0;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 0.2s;
+        }
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.05);
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .header h1 {
+            font-size: 1.2rem;
+            color: #4caf50;
+            font-family: "楷体";
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .header h2 {
+            font-size: 2.2rem;
+            color: #1b5e20;
+            font-family: "楷体";
+        }
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: #4caf50;
+            margin-top: 10px;
+        }
+        .tea-detail {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            margin: 20px 0;
+        }
+        .tea-detail h3 {
+            color: #1b5e20;
+            font-family: "楷体";
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .tea-img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .tea-detail ul {
+            line-height: 2;
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        .btn {
+            display: block;
+            width: fit-content;
+            padding: 12px 24px;
+            background-color: #4caf50;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: "楷体";
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+            margin: 20px auto;
+        }
+        .btn:hover {
+            background-color: #388e3c;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>茶艺馆</h1>
+            <h2>福建 · 铁观音</h2>
+            <p class="subtitle">中国十大名茶之一，乌龙茶代表</p>
+        </div>
+
+        <div class="tea-detail">
+            <img src="https://img2.baidu.com/it/u=2047999496,1023877956&fm=253&fmt=auto&app=120&f=JPEG?w=1423&h=800" alt="铁观音" class="tea-img">
+            <h3>铁观音核心信息</h3>
+            <ul>
+                <li><strong>核心产地</strong>：福建省泉州市安溪县；</li>
+                <li><strong>品类</strong>：青茶（乌龙茶），半发酵（30-70%）；</li>
+                <li><strong>香型分类</strong>：清香型（轻发酵）、浓香型（重发酵烘焙）、陈香型（老茶）；</li>
+                <li><strong>茶汤特点</strong>：汤色金黄明亮，滋味醇厚甘鲜，香气馥郁持久（兰花香/焦糖香）；</li>
+                <li><strong>冲泡要点</strong>：水温95-100℃，紫砂壶冲泡，茶水比1:20，快进快出，可冲泡7-8次。</li>
+            </ul>
+        </div>
+
+        <a href="index.html" class="btn">返回茶艺馆首页</a>
+    </div>
+</body>
+</html>

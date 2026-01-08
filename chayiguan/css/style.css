@@ -1,0 +1,338 @@
+/* 全局重置 - 统一基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "微软雅黑", "楷体", sans-serif;
+}
+
+/* 页面基础样式 - 兼容多浏览器 */
+body {
+    background-color: #f5f9f5;
+    background-image: radial-gradient(#e8f5e9 1px, transparent 1px);
+    background-size: 20px 20px;
+    color: #2d3b2d;
+    line-height: 1.6;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased; /* 字体抗锯齿 */
+}
+
+/* 容器 - 居中+自适应 */
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* 头部样式 - 加浏览器前缀提升兼容性 */
+.header {
+    text-align: center;
+    padding: 30px 0;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.05);
+    /* 兼容webkit内核浏览器 */
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    animation: fadeIn 0.8s forwards;
+}
+
+.header h1 {
+    font-size: 2.8rem;
+    color: #1b5e20;
+    font-family: "楷体";
+    text-shadow: 2px 2px 4px rgba(27, 94, 32, 0.2);
+    margin-bottom: 10px;
+}
+
+.header .subtitle {
+    font-size: 1.2rem;
+    color: #4caf50;
+}
+
+/* 导航样式 - 保留（地图页面用，详情页无导航） */
+.nav {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    animation: fadeIn 1s forwards 0.2s;
+    opacity: 0;
+}
+
+.nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+}
+
+.nav li a {
+    display: block;
+    padding: 15px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.nav li a.active, .nav li a:hover {
+    color: #1b5e20;
+    font-weight: bold;
+    background: rgba(165, 214, 167, 0.2);
+}
+
+/* 详情容器 - 基础布局+入场动画 */
+.detail-container {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    margin-bottom: 30px;
+    animation: fadeInUp 0.8s forwards;
+}
+
+/* 图片容器 - 悬停缩放动画 */
+.img-box {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.5s ease;
+}
+.img-box img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* 防止图片变形 */
+}
+.img-box:hover {
+    transform: scale(1.02);
+}
+
+/* 标签页按钮 - 补全缺失的样式 */
+.tab-nav {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #a5d6a7;
+}
+.tab-btn {
+    padding: 8px 16px;
+    background-color: #f1f8e9;
+    border: none; /* 去掉默认边框 */
+    border-radius: 4px 4px 0 0;
+    cursor: pointer;
+    margin-right: 4px;
+    color: #2e7d32;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+.tab-btn.active {
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+}
+.tab-btn:hover:not(.active) {
+    background-color: #e8f5e9;
+}
+
+/* 标签页内容 - 基础显示控制 */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s forwards;
+}
+.tab-content.active {
+    display: block;
+}
+
+/* 高亮提示框 - 优化样式 */
+.highlight {
+    background: #f1f8e9;
+    padding: 15px;
+    border-left: 4px solid #4caf50;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0; /* 圆角优化 */
+}
+
+/* 按钮样式 - 交互优化 */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2e7d32;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+}
+.btn:hover {
+    background-color: #1b5e20;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(27, 94, 32, 0.1);
+}
+
+/* CSS3动画定义 - 补全所有参数，确保生效 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 茶产地图 - 完整样式，修复定位问题 */
+.tea-map {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background-image: url("../res/china-tea-map.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 30px 0;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 1s forwards;
+}
+
+/* 地图标记 - 修复定位+交互 */
+.map-marker {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #4caf50;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: pulse 2s infinite;
+    text-decoration: none; /* 去掉链接下划线 */
+}
+.map-marker:hover {
+    transform: scale(1.2);
+    background-color: #1b5e20;
+    box-shadow: 0 6px 12px rgba(27, 94, 32, 0.2);
+    animation: none; /* 悬停停止脉冲 */
+}
+
+/* 地图标记位置 - 适配不同屏幕，优化坐标 */
+.map-marker.zhejiang { top: 200px; left: calc(60% - 30px); }
+.map-marker.jiangsu { top: 180px; left: calc(55% - 30px); }
+.map-marker.anhui { top: 200px; left: calc(50% - 30px); }
+.map-marker.hunan { top: 250px; left: calc(52% - 30px); }
+.map-marker.jiangxi { top: 220px; left: calc(53% - 30px); }
+.map-marker.yunnan { top: 280px; left: calc(25% - 30px); }
+.map-marker.sichuan { top: 240px; left: calc(35% - 30px); }
+.map-marker.guizhou { top: 260px; left: calc(42% - 30px); }
+.map-marker.fujian { top: 230px; left: calc(58% - 30px); }
+.map-marker.guangdong { top: 280px; left: calc(59% - 30px); }
+.map-marker.taiwan { top: 250px; left: calc(63% - 30px); }
+.map-marker.guangxi { top: 300px; left: calc(55% - 30px); }
+.map-marker.henan { top: 200px; left: calc(48% - 30px); }
+.map-marker.shandong { top: 160px; left: calc(45% - 30px); }
+.map-marker.shaanxi { top: 180px; left: calc(38% - 30px); }
+.map-marker.gansu { top: 160px; left: calc(32% - 30px); }
+
+/* 标记提示框 - 修复语法错误，补全样式 */
+.marker-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: #333;
+    font-size: 0.9rem;
+    display: none;
+    z-index: 10;
+    animation: fadeIn 0.3s forwards; /* 修复截断的动画参数 */
+    margin-bottom: 8px; /* 增加间距，避免遮挡 */
+}
+/* 悬停显示提示框 */
+.map-marker:hover .marker-tooltip {
+    display: block;
+}
+
+/* 响应式适配 - 优化移动端显示 */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem; /* 移动端字号缩小 */
+    }
+    .tea-map {
+        height: 300px; /* 移动端地图高度适配 */
+    }
+    .map-marker {
+        width: 40px;
+        height: 40px; /* 移动端标记缩小 */
+        font-size: 0.8rem;
+    }
+    .tab-nav {
+        flex-wrap: wrap; /* 标签页按钮换行 */
+    }
+    .tab-btn {
+        margin-bottom: 4px;
+    }
+}
+/* 通用板块切换动画 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* 茶俗馆/茶艺馆导航栏通用hover效果 */
+.detail-nav-btn, .tea-nav-btn {
+    outline: none; /* 去掉点击边框 */
+}
+/* 响应式适配：移动端导航栏换行 */
+@media (max-width: 768px) {
+    .detail-nav, .tea-nav {
+        flex-wrap: wrap;
+    }
+    .detail-nav-btn, .tea-nav-btn {
+        flex: 1 1 45%;
+        margin-bottom: 5px;
+    }
+    .leaf-container {
+        height: 300px !important;
+    }
+    .brew-container {
+        width: 250px !important;
+        height: 350px !important;
+    }
+}

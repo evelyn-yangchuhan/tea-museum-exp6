@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茶艺馆 - 河南 · 信阳毛尖</title>
+    <style>
+        /* 基础样式（与所有地区详情页完全统一） */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "微软雅黑", "楷体", sans-serif;
+        }
+        body {
+            background-color: #f5f9f5;
+            background-image: radial-gradient(#e8f5e9 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #2d3b2d;
+            line-height: 1.6;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* 核心渐显动画：和其他地区一致的「透明+位移」效果 */
+        .container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px 0;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 0.2s;
+        }
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.05);
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .header h1 {
+            font-size: 1.2rem;
+            color: #4caf50;
+            font-family: "楷体";
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .header h2 {
+            font-size: 2.2rem;
+            color: #1b5e20;
+            font-family: "楷体";
+        }
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: #4caf50;
+            margin-top: 10px;
+        }
+        /* 详情内容样式（统一视觉风格） */
+        .tea-detail {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            margin: 20px 0;
+        }
+        .tea-detail h3 {
+            color: #1b5e20;
+            font-family: "楷体";
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .tea-img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .tea-detail ul {
+            line-height: 2;
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        /* 返回按钮（统一交互逻辑） */
+        .btn {
+            display: block;
+            width: fit-content;
+            padding: 12px 24px;
+            background-color: #4caf50;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: "楷体";
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+            margin: 20px auto;
+        }
+        .btn:hover {
+            background-color: #388e3c;
+        }
+        /* 渐显动画：0.2秒延迟+1秒过渡，带轻微向上位移更自然 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 茶艺馆标题 + 河南信阳毛尖标题 -->
+        <div class="header">
+            <h1>茶艺馆</h1>
+            <h2>河南 · 信阳毛尖</h2>
+            <p class="subtitle">中国十大名茶之一，北方绿茶典范</p>
+        </div>
+
+        <!-- 信阳毛尖核心详情 -->
+        <div class="tea-detail">
+            
+            <img src="https://img1.baidu.com/it/u=4215847617,2158906768&fm=253&fmt=auto&app=138&f=JPG?w=500&h=242" alt="信阳毛尖" class="tea-img">
+            <h3>信阳毛尖核心信息</h3>
+            <ul>
+                <li><strong>核心产地</strong>：河南省信阳市浉河区、平桥区（核心产区为车云山、集云山、云雾山等“五云两潭一寨”）；</li>
+                <li><strong>品类</strong>：绿茶（不发酵），属“针形绿茶”；</li>
+                <li><strong>外形特点</strong>：细、圆、光、直、多白毫，色泽翠绿或黄绿，条索紧细挺直；</li>
+                <li><strong>茶汤口感</strong>：汤色清澈嫩绿，滋味鲜爽回甘，香气清高持久（栗香/兰香）；</li>
+                <li><strong>采摘等级</strong>：明前茶（清明前）为上品，采一芽一叶或一芽二叶初展，雨前茶次之；</li>
+                <li><strong>冲泡建议</strong>：水温80-85℃，玻璃杯/白瓷杯冲泡，茶水比1:50，冲泡时间1-2分钟，忌闷泡。</li>
+            </ul>
+        </div>
+
+        <!-- 返回茶艺馆首页按钮（点击跳转回index.html） -->
+        <a href="index.html" class="btn">返回茶艺馆首页</a>
+    </div>
+</body>
+</html>

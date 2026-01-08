@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茶艺馆 - 江苏 · 碧螺春</title>
+    <style>
+        /* 基础样式（与所有地区详情页100%统一） */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "微软雅黑", "楷体", sans-serif;
+        }
+        body {
+            background-color: #f5f9f5;
+            background-image: radial-gradient(#e8f5e9 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #2d3b2d;
+            line-height: 1.6;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* 核心渐显动画：和其他地区完全一致的「透明+位移」效果 */
+        .container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px 0;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 0.2s;
+        }
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.05);
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .header h1 {
+            font-size: 1.2rem;
+            color: #4caf50;
+            font-family: "楷体";
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .header h2 {
+            font-size: 2.2rem;
+            color: #1b5e20;
+            font-family: "楷体";
+        }
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: #4caf50;
+            margin-top: 10px;
+        }
+        /* 详情内容样式（统一视觉风格） */
+        .tea-detail {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            margin: 20px 0;
+        }
+        .tea-detail h3 {
+            color: #1b5e20;
+            font-family: "楷体";
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .tea-img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .tea-detail ul {
+            line-height: 2;
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        /* 返回按钮（统一交互逻辑） */
+        .btn {
+            display: block;
+            width: fit-content;
+            padding: 12px 24px;
+            background-color: #4caf50;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: "楷体";
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+            margin: 20px auto;
+        }
+        .btn:hover {
+            background-color: #388e3c;
+        }
+        /* 渐显动画：0.2秒延迟+1秒过渡，带轻微向上位移（和所有地区一致） */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 茶艺馆标题 + 江苏碧螺春标题（和其他地区格式统一） -->
+        <div class="header">
+            <h1>茶艺馆</h1>
+            <h2>江苏 · 碧螺春</h2>
+            <p class="subtitle">中国十大名茶之一，洞庭山绿茶珍品</p>
+        </div>
+
+        <!-- 碧螺春核心详情（内容准确、结构统一） -->
+        <div class="tea-detail">
+           
+            <img src="https://img0.baidu.com/it/u=990070491,4000948180&fm=253&fmt=auto&app=138&f=JPEG?w=905&h=500" alt="碧螺春" class="tea-img">
+            <h3>碧螺春核心信息</h3>
+            <ul>
+                <li><strong>核心产地</strong>：江苏省苏州市吴中区洞庭东、西山（洞庭山），为地理标志保护产品；</li>
+                <li><strong>品类</strong>：绿茶（不发酵），属“卷曲形绿茶”；</li>
+                <li><strong>外形特点</strong>：条索纤细，卷曲成螺，满身披毫，色泽银绿隐翠，俗称“满身毛、铜丝条、蜜蜂腿”；</li>
+                <li><strong>茶汤口感</strong>：汤色清澈嫩绿，滋味鲜爽甘醇，香气浓郁持久（花果香/栗香），有“一嫩三鲜”之称；</li>
+                <li><strong>采摘等级</strong>：明前茶（清明前）为极品，采一芽一叶初展，每斤干茶约需6-7万个芽头；</li>
+                <li><strong>冲泡建议</strong>：水温75-80℃，玻璃杯冲泡（上投法：先注水后放茶），茶水比1:50，冲泡时间1-2分钟。</li>
+            </ul>
+        </div>
+
+        <!-- 返回茶艺馆首页按钮（交互逻辑和所有地区一致） -->
+        <a href="index.html" class="btn">返回茶艺馆首页</a>
+    </div>
+</body>
+</html>

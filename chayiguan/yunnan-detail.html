@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茶艺馆 - 云南 · 普洱茶</title>
+    <style>
+        /* 基础样式（和其他地区详情页完全统一） */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "微软雅黑", "楷体", sans-serif;
+        }
+        body {
+            background-color: #f5f9f5;
+            background-image: radial-gradient(#e8f5e9 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #2d3b2d;
+            line-height: 1.6;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* 核心渐显动画：opacity+位移，和其他地区一致 */
+        .container {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px 0;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 0.2s;
+        }
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.05);
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .header h1 {
+            font-size: 1.2rem;
+            color: #4caf50;
+            font-family: "楷体";
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .header h2 {
+            font-size: 2.2rem;
+            color: #1b5e20;
+            font-family: "楷体";
+        }
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: #4caf50;
+            margin-top: 10px;
+        }
+        /* 详情内容样式 */
+        .tea-detail {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            margin: 20px 0;
+        }
+        .tea-detail h3 {
+            color: #1b5e20;
+            font-family: "楷体";
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .tea-img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .tea-detail ul {
+            line-height: 2;
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        /* 返回按钮样式（和其他页面统一交互） */
+        .btn {
+            display: block;
+            width: fit-content;
+            padding: 12px 24px;
+            background-color: #4caf50;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: "楷体";
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+            margin: 20px auto;
+        }
+        .btn:hover {
+            background-color: #388e3c;
+        }
+        /* 渐显动画：带轻微位移，更自然 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 茶艺馆归属标题 + 云南普洱茶标题 -->
+        <div class="header">
+            <h1>茶艺馆</h1>
+            <h2>云南 · 普洱茶</h2>
+            <p class="subtitle">中国特色名茶，后发酵黑茶代表</p>
+        </div>
+
+        <!-- 普洱茶核心详情 -->
+        <div class="tea-detail">
+            <!-- 替换为你的普洱茶图片路径即可 -->
+            <img src="https://img0.baidu.com/it/u=2144369385,2309707434&fm=253&fmt=auto&app=138&f=JPEG?w=938&h=500" alt="普洱茶" class="tea-img">
+            <h3>普洱茶核心信息</h3>
+            <ul>
+                <li><strong>核心产地</strong>：云南省普洱市、西双版纳傣族自治州、临沧市等；</li>
+                <li><strong>品类</strong>：黑茶（后发酵），分生普（自然发酵）、熟普（人工渥堆发酵）；</li>
+                <li><strong>外形特点</strong>：常见紧压茶（饼茶、砖茶、沱茶），也有散茶；生普色泽墨绿，熟普色泽褐红；</li>
+                <li><strong>茶汤口感</strong>：生普（新茶）茶汤黄绿，滋味鲜爽带苦涩，回甘强劲；熟普茶汤红褐浓稠，滋味醇厚顺滑，陈香明显；</li>
+                <li><strong>存储特点</strong>：生普可长期存放自然发酵，越陈越香；熟普发酵充分，存放后口感更温润；</li>
+                <li><strong>冲泡建议</strong>：水温95-100℃，紫砂壶/盖碗冲泡，茶水比1:20，洗茶1-2次，可冲泡10次以上。</li>
+            </ul>
+        </div>
+
+        <!-- 返回茶艺馆首页按钮（点击回到index.html） -->
+        <a href="index.html" class="btn">返回茶艺馆首页</a>
+    </div>
+</body>
+</html>
