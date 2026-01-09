@@ -1,0 +1,367 @@
+* 全局重置 - 统一基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "微软雅黑", "楷体", sans-serif;
+}
+
+/* 页面基础样式 - 兼容多浏览器 */
+body {
+    background-color: #f8fbf8;
+    background-image: linear-gradient(120deg, #f8fbf8 0%, #e8f5e9 100%);
+    color: #2d3b2d;
+    line-height: 1.6;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased; /* 字体抗锯齿 */
+}
+
+/* 容器 - 居中+自适应 */
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* 头部样式 - 加浏览器前缀提升兼容性 */
+.header {
+    text-align: center;
+    padding: 30px 0;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.05);
+    /* 兼容webkit内核浏览器 */
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    animation: fadeIn 0.8s forwards;
+}
+
+.header h1 {
+    font-size: 2.8rem;
+    color: #1b5e20;
+    font-family: "楷体";
+    text-shadow: 2px 2px 4px rgba(27, 94, 32, 0.2);
+    margin-bottom: 10px;
+}
+
+.header .subtitle {
+    font-size: 1.2rem;
+    color: #4caf50;
+}
+
+/* 导航样式 - 保留（时间轴页面用，详情页无导航） */
+.nav {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    animation: fadeIn 1s forwards 0.2s;
+    opacity: 0;
+}
+
+.nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+}
+
+.nav li a {
+    display: block;
+    padding: 15px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease; /* 补全ease过渡 */
+}
+
+.nav li a.active, .nav li a:hover {
+    color: #1b5e20;
+    font-weight: bold;
+    background: rgba(165, 214, 167, 0.2);
+}
+
+/* 详情容器 - 基础布局 */
+.detail-container {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    margin-bottom: 30px;
+}
+
+/* 图片容器 - 悬停缩放动画 */
+.img-box {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 20px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.5s ease;
+}
+.img-box img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* 防止图片变形 */
+}
+.img-box:hover {
+    transform: scale(1.02);
+}
+
+/* 标签页按钮 - 补全缺失的样式 */
+.tab-nav {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #a5d6a7;
+}
+.tab-btn {
+    padding: 8px 16px;
+    background-color: #f1f8e9;
+    border: none; /* 去掉默认边框 */
+    border-radius: 4px 4px 0 0;
+    cursor: pointer;
+    margin-right: 4px;
+    color: #2e7d32;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+.tab-btn.active {
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+}
+.tab-btn:hover:not(.active) {
+    background-color: #e8f5e9;
+}
+
+/* 标签页内容 - 基础显示控制 */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s forwards;
+}
+.tab-content.active {
+    display: block;
+}
+
+/* 高亮提示框 - 优化样式 */
+.highlight {
+    background: #f1f8e9;
+    padding: 15px;
+    border-left: 4px solid #4caf50;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0; /* 圆角优化 */
+}
+
+/* 按钮样式 - 交互优化 */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2e7d32;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+}
+.btn:hover {
+    background-color: #1b5e20;
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(27, 94, 32, 0.1);
+}
+
+/* 折叠/展开按钮 - 补全样式 */
+.toggle-btn {
+    padding: 8px 16px;
+    background-color: #f1f8e9;
+    border: 1px solid #a5d6a7;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    color: #2e7d32;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+.toggle-btn:hover {
+    background-color: #e8f5e9;
+    transform: scale(1.02);
+}
+
+/* CSS3动画定义 - 补全所有参数，确保生效 */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+/* 时间轴样式 - 完整无错版 */
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 50px auto;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: linear-gradient(to bottom, #4caf50, #a5d6a7, #4caf50);
+    border-radius: 2px;
+    transform: translateX(-50%);
+    animation: fadeIn 1.2s forwards;
+}
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards;
+}
+.timeline-item.left { left: 0; }
+.timeline-item.right { left: 50%; }
+/* 时间轴项依次入场 - 补全延迟 */
+.timeline-item.left:nth-child(1) { animation-delay: 0.2s; }
+.timeline-item.right:nth-child(2) { animation-delay: 0.4s; }
+.timeline-item.left:nth-child(3) { animation-delay: 0.6s; }
+.timeline-item.right:nth-child(4) { animation-delay: 0.8s; }
+.timeline-item.left:nth-child(5) { animation-delay: 1s; }
+.timeline-item.right:nth-child(6) { animation-delay: 1.2s; }
+.timeline-item.left:nth-child(7) { animation-delay: 1.4s; }
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    border: 4px solid #4caf50;
+    z-index: 1;
+    animation: pulse 2s infinite 1s;
+}
+.timeline-item.left::after { right: -13px; }
+.timeline-item.right::after { left: -13px; }
+
+.timeline-content {
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+    transition: all 0.3s ease;
+}
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(27, 94, 32, 0.1);
+}
+.timeline-content h3 {
+    color: #1b5e20;
+    margin-bottom: 10px;
+    font-family: "楷体";
+    font-size: 1.5rem;
+}
+
+/* 响应式适配 - 优化移动端显示 */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem; /* 移动端字号缩小 */
+    }
+    .timeline::before {
+        left: 30px; /* 时间轴靠左 */
+    }
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 20px;
+    }
+    .timeline-item.right {
+        left: 0; /* 右侧项也靠左 */
+    }
+    .timeline-item.left::after, .timeline-item.right::after {
+        left: 22px; /* 圆点统一位置 */
+    }
+    .tab-nav {
+        flex-wrap: wrap; /* 标签页按钮换行 */
+    }
+    .tab-btn {
+        margin-bottom: 4px;
+    }
+}
+/* 时间轴跳转链接样式 - 核心交互 */
+.timeline-content h3 a {
+    color: #1b5e20;
+    text-decoration: none;
+    font-family: "楷体";
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+.timeline-content h3 a:hover {
+    color: #4caf50;
+    text-decoration: underline;
+    transform: scale(1.02);
+    display: inline-block;
+}
+
+/* 彻底隐藏详情页的导航栏（防止误引入） */
+.detail-container .nav {
+    display: none !important;
+}
+
+.video-box {
+    max-width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 20px 0;
+    background-color: #f1f8e9;
+}
+
+.video-box iframe {
+    width: 100%;
+    min-height: 450px; 
+    border: none;
+}
+/* 茶叶飘落动画 */
+@keyframes teaFall {
+    0% { transform: translateY(-50px); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(800px); opacity: 0; }
+}
+/* 容器渐隐效果 */
+.fade-out {
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+/* 板块切换激活态（可根据需求自定义） */
+.tea-nav-btn.active {
+    background-color: #1b5e20;
+    color: #fff;
+}
+.tea-tab-content {
+    display: none;
+}
+.tea-tab-content.active {
+    display: block;
+}
