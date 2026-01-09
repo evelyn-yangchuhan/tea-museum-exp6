@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茶俗馆 - 中国茶俗发展</title>
+    <link rel="stylesheet" href="css/style.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部标题：突出“茶俗馆”核心标识 -->
+        <div class="header">
+            <h1 style="font-size: 1.2rem; color: #4caf50; margin-bottom: 8px;">茶俗馆</h1>
+            <h2 style="font-size: 2.5rem; color: #1b5e20; font-family: '楷体'; text-shadow: 2px 2px 4px rgba(27, 94, 32, 0.2);">中国茶俗发展</h2>
+            <p class="subtitle">从先秦到清代，领略茶文化的千年演变</p>
+        </div>
+ 
+        <div class="video-box">
+            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=1450108321&bvid=BV1pv421i71Q&cid=1425130851&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+        </div>
+
+        <!-- 新增：四张图片轮播模块（视频下方、时间轴上方） -->
+        <div class="tea-img-group">
+            <div class="img-track">
+                <div class="tea-img-item">
+                    <img src="https://img0.baidu.com/it/u=3519801799,2815828002&fm=253&fmt=auto&app=138&f=JPEG?w=800&h=800" alt="备茶：茶文化的开端"> <!-- 替换为你的图片路径 -->
+                </div>
+                <div class="tea-img-item">
+                    <img src="https://img0.baidu.com/it/u=3335285951,303352375&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="温具：传统茶艺步骤"> <!-- 替换为你的图片路径 -->
+                </div>
+                <div class="tea-img-item">
+                    <img src="https://img0.baidu.com/it/u=3483308850,909152584&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" alt="冲泡：明代泡茶革命"> <!-- 替换为你的图片路径 -->
+                </div>
+                <div class="tea-img-item">
+                    <img src="https://img1.baidu.com/it/u=3201666518,2847323299&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500" alt="品饮：清代市井茶风"> <!-- 替换为你的图片路径 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 核心时间轴（可点击跳转） -->
+        <div class="timeline">
+            <!-- 先秦 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3><a href="xianqin-detail.html">先秦：茶的起源</a></h3>
+                    <p>茶最初以药用、食用形态出现，巴蜀地区为原产地，《神农本草经》首次记载茶的药用价值。</p>
+                </div>
+            </div>
+            <!-- 两汉 -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3><a href="lianghan-detail.html">两汉：茶俗萌芽</a></h3>
+                    <p>饮茶习俗初现，《僮约》记载“烹荼尽具”，茶从药用逐渐转向日常饮用。</p>
+                </div>
+            </div>
+            <!-- 唐代 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3><a href="tang-detail.html">唐代：茶文化繁荣</a></h3>
+                    <p>煎茶法成为主流，陆羽著《茶经》，茶文化形成完整体系，茶事普及朝野。</p>
+                </div>
+            </div>
+            <!-- 宋代 -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3><a href="song-detail.html">宋代：极致风雅</a></h3>
+                    <p>点茶、斗茶成风，宋徽宗著《大观茶论》，茶文化达到艺术巅峰。</p>
+                </div>
+            </div>
+            <!-- 元代 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3><a href="yuan-detail.html">元代：承前启后</a></h3>
+                    <p>散茶兴起，茶俗从贵族雅事转向平民日常，简化饮茶方式。</p>
+                </div>
+            </div>
+            <!-- 明代 -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3><a href="ming-detail.html">明代：泡茶革命</a></h3>
+                    <p>朱元璋废团改散，沸水冲泡散茶成为主流，茶具与茶艺进一步发展。</p>
+                </div>
+            </div>
+            <!-- 清代 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3><a href="qing-detail.html">清代：市井茶风</a></h3>
+                    <p>茶馆文化鼎盛，工夫茶兴起，茶叶全球化，茶文化多元融合。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* 时间轴链接样式优化（仅主页面生效） */
+        .timeline-content h3 a {
+            color: #1b5e20;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .timeline-content h3 a:hover {
+            color: #4caf50;
+            text-decoration: underline;
+        }
+        /* 调整主页面标题层级样式，让“茶俗馆”更醒目 */
+        .header h1 {
+            font-family: "楷体";
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        .header h2 {
+            margin-bottom: 10px;
+        }
+
+        /* 新增：轮播模块样式（适配页面整体风格） */
+        .tea-img-group {
+            width: 100%;
+            max-width: 1100px;
+            height: 700px;
+            margin: 40px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(27, 94, 32, 0.15);
+        }
+        .img-track {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            height: 100%;
+            cursor: grab;
+            transition: transform 0.5s ease-out;
+        }
+        .img-track.grabbing {
+            cursor: grabbing;
+            transition: none;
+        }
+        .tea-img-item {
+            flex: 0 0 100%;
+            height: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        /* 图片堆叠hover效果（增强交互） */
+        .tea-img-item:nth-child(1) { z-index: 4; }
+        .tea-img-item:nth-child(2) { z-index: 3; }
+        .tea-img-item:nth-child(3) { z-index: 2; }
+        .tea-img-item:nth-child(4) { z-index: 1; }
+        .tea-img-group:hover .tea-img-item:nth-child(2) {
+            transform: translate(10px, 10px);
+            transition: transform 0.3s ease;
+        }
+        .tea-img-group:hover .tea-img-item:nth-child(3) {
+            transform: translate(10px, 10px);
+            transition: transform 0.3s ease;
+        }
+        .tea-img-group:hover .tea-img-item:nth-child(4) {
+            transform: translate(10px, 10px);
+            transition: transform 0.3s ease;
+        }
+        .tea-img-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .tea-img-item:hover img {
+            transform: scale(1.02);
+        }
+        /* 响应式适配：小屏调整轮播尺寸 */
+        @media (max-width: 768px) {
+            .tea-img-group {
+                height: 300px;
+                margin: 20px auto;
+            }
+        }
+    </style>
+	
+    <!-- 新增：轮播拖拽功能JS -->
+    <script>
+        // 轮播核心逻辑（鼠标+触摸拖拽，循环轮播）
+        const track = document.querySelector('.img-track');
+        let isDragging = false;
+        let startX;
+        let startLeft;
+        let currentIndex = 0;
+        const itemWidth = () => track.offsetWidth;
+        const itemCount = track.children.length;
+
+        // 初始化轮播位置
+        track.style.transform = `translateX(0px)`;
+
+        // 鼠标拖拽事件
+        track.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            track.classList.add('grabbing');
+            startX = e.clientX;
+            startLeft = parseFloat(getComputedStyle(track).transform.split('(')[1].split(')')[0].split(',')[4]) || 0;
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const dx = e.clientX - startX;
+            track.style.transform = `translateX(${startLeft + dx}px)`;
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            track.classList.remove('grabbing');
+            
+            // 计算拖拽距离，判断切换方向
+            const endX = parseFloat(getComputedStyle(track).transform.split('(')[1].split(')')[0].split(',')[4]) || 0;
+            const dragDistance = endX - startLeft;
+
+            if (dragDistance < -itemWidth() * 0.1) {
+                currentIndex = (currentIndex + 1) % itemCount;
+            } else if (dragDistance > itemWidth() * 0.1) {
+                currentIndex = (currentIndex - 1 + itemCount) % itemCount;
+            }
+
+            // 切换到目标图片
+            track.style.transform = `translateX(-${currentIndex * itemWidth()}px)`;
+
+            
+        });
+
+        // 触摸拖拽（适配移动端）
+        track.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            startX = e.touches[0].clientX;
+            startLeft = parseFloat(getComputedStyle(track).transform.split('(')[1].split(')')[0].split(',')[4]) || 0;
+            e.preventDefault();
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            const dx = e.touches[0].clientX - startX;
+            track.style.transform = `translateX(${startLeft + dx}px)`;
+        });
+
+        document.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            const endX = parseFloat(getComputedStyle(track).transform.split('(')[1].split(')')[0].split(',')[4]) || 0;
+            const dragDistance = endX - startLeft;
+
+            if (dragDistance < -itemWidth() * 0.1) {
+                currentIndex = (currentIndex + 1) % itemCount;
+            } else if (dragDistance > itemWidth() * 0.1) {
+                currentIndex = (currentIndex - 1 + itemCount) % itemCount;
+            }
+
+            track.style.transform = `translateX(-${currentIndex * itemWidth()}px)`;
+
+            if (currentIndex === itemCount - 1) {
+                setTimeout(() => {
+                    track.style.transition = 'none';
+                    track.style.transform = `translateX(0px)`;
+                    currentIndex = 0;
+                    setTimeout(() => {
+                        track.style.transition = 'transform 0.5s ease-out';
+                    }, 50);
+                }, 500);
+            }
+        });
+
+        // 窗口大小变化时适配轮播尺寸
+        window.addEventListener('resize', () => {
+            track.style.transition = 'none';
+            track.style.transform = `translateX(-${currentIndex * itemWidth()}px)`;
+            setTimeout(() => {
+                track.style.transition = 'transform 0.5s ease-out';
+            }, 50);
+        });
+    </script>
+
+	<script src="js/main.js"></script>
+	 
+</body>
+</html>

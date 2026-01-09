@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茶俗馆 - 先秦茶俗</title>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 1. 全局重置+深色系核心变量（恢复基础版，去掉过度增强） */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "微软雅黑", "楷体", sans-serif;
+            /* 恢复基础过渡时间，去掉过度动画 */
+            transition: all 0.3s ease-in-out;
+        }
+        :root {
+            --tea-green-deep: #0a381c;      
+            --tea-green-mid: #1a5e32;       
+            --tea-green-light: #a2e0ac;     
+            --tea-green-bg: #0a2e18;        
+            --tea-green-hover: #227a3c;
+            --overlay: rgba(10, 46, 24, 0.8); 
+            --overlay-hover: rgba(26, 94, 50, 0.9); 
+            --white: #f8f9fa;
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --shadow-base: 0 8px 24px rgba(0, 0, 0, 0.15);
+            --shadow-hover: 0 12px 35px rgba(0, 0, 0, 0.28);
+        }
+
+        /* 2. 沉浸式深色背景+古风花纹（保留基础样式，无增强） */
+        body {
+            background-color: var(--tea-green-bg);
+            background-image: 
+                linear-gradient(180deg, var(--tea-green-bg) 0%, var(--tea-green-deep) 100%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.629 5.371a5.858 5.858 0 00-8.284 0L30 21.716 13.655 5.371a5.858 5.858 0 00-8.284 8.284L21.716 30 5.371 46.345a5.858 5.858 0 008.284 8.284L30 38.284l16.345 16.345a5.858 5.858 0 008.284-8.284L38.284 30l16.345-16.345a5.858 5.858 0 000-8.284z' fill='%23d6e9dc' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-size: 100% 100%, 30px 30px;
+            background-attachment: fixed;
+            color: var(--tea-green-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            padding: 20px 0 80px;
+        }
+
+        /* 3. 核心容器+头部（去掉字体发光，恢复基础样式） */
+        .container {
+            max-width: 1280px;
+            width: 92%;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            animation: fadeIn 0.8s forwards;
+            cursor: default;
+        }
+        .header h1 {
+            font-size: clamp(2.2rem, 5vw, 3rem);
+            color: var(--white);
+            font-family: "楷体";
+            /* 去掉hover发光的初始阴影，恢复基础样式 */
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+        }
+        /* 去掉标题hover发光效果，仅轻微变色 */
+        .header:hover h1 {
+            color: var(--tea-green-light);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* 保留基础阴影，去掉发光 */
+        }
+        .header .subtitle {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--tea-green-light);
+            opacity: 0.9;
+        }
+        .header:hover .subtitle {
+            opacity: 1;
+            color: var(--white);
+        }
+
+        /* 4. 左右分栏布局（简化hover效果，去掉过度位移） */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+        /* 左侧内容区 - 简化hover，去掉过度位移 */
+        .content-left {
+            background: var(--overlay);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-base);
+            border: 1px solid rgba(214, 233, 220, 0.15);
+            animation: fadeInUp 0.8s forwards 0.2s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .content-left:hover {
+            background: var(--overlay-hover);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--tea-green-light);
+            transform: translateY(-2px); /* 简化位移，去掉过度上移 */
+        }
+        /* 右侧内容区 - 同步简化 */
+        .content-right {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            animation: fadeInUp 0.8s forwards 0.4s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .right-card {
+            background: var(--overlay);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-base);
+            border: 1px solid rgba(214, 233, 220, 0.15);
+            transform: translateY(0);
+        }
+        .right-card:hover {
+            background: var(--overlay-hover);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--tea-green-light);
+            transform: translateY(-2px); /* 简化位移 */
+        }
+
+        /* 5. 内容样式 - 去掉所有字体发光/放大，恢复基础hover */
+        .content-card h2 {
+            color: var(--white);
+            font-family: "楷体";
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--tea-green-mid);
+            padding-left: 10px;
+        }
+        /* 去掉标题hover发光，仅改边框颜色 */
+        .content-card:hover h2 {
+            border-left-color: var(--tea-green-light);
+            padding-left: 10px; /* 恢复固定padding，不放大 */
+            color: var(--tea-green-light);
+            text-shadow: none; /* 去掉发光阴影 */
+        }
+        .content-card p {
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+        .content-left:hover .content-card p {
+            opacity: 1;
+            color: var(--white);
+        }
+        .content-card ul {
+            list-style: none;
+            margin: 15px 0;
+        }
+        .content-card li {
+            padding: 8px 0 8px 20px;
+            position: relative;
+            opacity: 0.9;
+            cursor: pointer;
+        }
+        .content-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--tea-green-light);
+            font-weight: bold;
+        }
+        /* 简化列表项hover，去掉字体放大/发光 */
+        .content-card li:hover {
+            padding-left: 22px; /* 轻微位移，不夸张 */
+            opacity: 1;
+            color: var(--white);
+            font-size: 1rem; /* 恢复默认字体大小，不放大 */
+        }
+        .content-card li:hover::before {
+            color: var(--tea-green-light);
+            transform: scale(1.1); /* 轻微放大，去掉发光 */
+            left: 0;
+            text-shadow: none; /* 去掉发光 */
+        }
+        .content-card li strong {
+            color: var(--white);
+            opacity: 1;
+        }
+        /* 去掉strong标签hover发光 */
+        .content-card li:hover strong {
+            color: var(--tea-green-light);
+            text-shadow: none; /* 去掉发光 */
+        }
+
+        /* 6. 图片+高亮框 - 简化hover，去掉过度旋转/发光 */
+        .img-box {
+            width: 100%;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .img-box img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            filter: brightness(0.9); /* 恢复基础亮度，不夸张 */
+        }
+        /* 简化图片hover，去掉旋转/过度放大 */
+        .img-box:hover {
+            transform: scale(1.02); /* 轻微放大，去掉旋转 */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .img-box:hover img {
+            filter: brightness(1.05); /* 轻微提亮，不夸张 */
+        }
+        .highlight {
+            background: rgba(26, 94, 50, 0.3);
+            padding: 18px;
+            border-left: 4px solid var(--tea-green-mid);
+            margin: 0;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            cursor: default;
+        }
+        /* 简化高亮框hover，去掉发光 */
+        .highlight:hover {
+            background: rgba(39, 136, 66, 0.3);
+            border-left-color: var(--tea-green-light);
+            padding-left: 20px; /* 轻微位移，不夸张 */
+            transform: translateX(-1px); /* 轻微位移 */
+        }
+        .highlight strong {
+            color: var(--white);
+        }
+        /* 去掉高亮框strong hover发光/放大 */
+        .highlight:hover strong {
+            color: var(--tea-green-light);
+            text-shadow: none; /* 去掉发光 */
+            font-size: 1rem; /* 恢复默认字体大小 */
+        }
+
+        /* 7. 按钮样式 - 完整保留现有样式（核心：返回按钮效果不变） */
+        .btn-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9998;
+            width: 100%;
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            /* 保留现有渐变 */
+            background: linear-gradient(135deg, var(--tea-green-mid), var(--tea-green-deep));
+            color: var(--white);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        /* 保留按钮流光效果 */
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 150%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        }
+        /* 保留按钮hover效果 */
+        .btn:hover {
+            background: linear-gradient(135deg, var(--tea-green-hover), var(--tea-green-mid));
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+        }
+        .btn:hover::before {
+            left: 100%;
+            transition: left 0.35s ease-in-out;
+        }
+        .audio-control {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+            animation: fadeIn 1s forwards 0.5s;
+            opacity: 0;
+        }
+        .audio-btn {
+            width: clamp(50px, 8vw, 60px);
+            height: clamp(50px, 8vw, 60px);
+            border-radius: 50%;
+            /* 简化音频按钮渐变，去掉过度效果 */
+            background: linear-gradient(135deg, var(--tea-green-mid), var(--tea-green-deep));
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.5rem, 3vw, 1.8rem);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        /* 简化音频按钮hover，去掉过度旋转/发光 */
+        .audio-btn:hover {
+            background: linear-gradient(135deg, var(--tea-green-hover), var(--tea-green-mid));
+            transform: scale(1.08) rotate(5deg); /* 轻微旋转/放大，去掉发光 */
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+            color: var(--tea-green-light);
+            text-shadow: none; /* 去掉发光 */
+        }
+        .audio-btn:active {
+            transform: scale(1.02) rotate(3deg);
+        }
+        #bgm-audio {
+            display: none;
+        }
+
+        /* 8. 动画 - 保留基础动画，去掉过度增强 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); } /* 简化呼吸动画 */
+            100% { transform: scale(1); }
+        }
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s ease-in-out;
+        }
+        .scroll-animate.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 9. 响应式 - 保留基础样式 */
+        @media (max-width: 768px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            .content-left, .content-right {
+                padding: 20px;
+            }
+            .audio-control {
+                top: 15px;
+                left: 15px;
+            }
+            .btn {
+                padding: 10px 24px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header scroll-animate">
+            <h1>先秦茶俗</h1>
+            <p class="subtitle">茶的起源 · 药用与食用的初始形态，中国茶文化的源头</p>
+        </header>
+
+        <div class="main-layout">
+            <div class="content-left scroll-animate">
+                <div class="content-card">
+                    <h2>先秦茶事：茶的发现与早期应用</h2>
+                    <p>先秦是中国茶文化的起源阶段，茶最初并非作为饮品存在，而是以"药用"和"食用"的形态出现在先民生活中。</p>
+                    <ul>
+                        <li><strong>药用价值发现</strong>：《神农本草经》记载"神农尝百草，日遇七十二毒，得荼（茶）而解之"，茶是上古时期重要的解毒药材；</li>
+                        <li><strong>食用方式原始</strong>：茶被当作"茗菜"与其他食材一同煮制食用，属于早期植物性食物来源；</li>
+                        <li><strong>祭祀礼仪用途</strong>：商周时期，茶开始出现在祭祀活动中，作为敬献神灵的贡品；</li>
+                        <li><strong>地理分布局限</strong>：茶主要分布在西南巴蜀地区（今四川、云南），尚未形成跨区域传播。</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h2>先秦茶风：从野生采集到初步认知</h2>
+                    <p>先秦时期的茶处于自然野生状态，人们对茶的认知停留在实用层面，尚未形成独立的茶文化体系。</p>
+                    <ul>
+                        <li><strong>野生采集为主</strong>：茶为野生植物，人工栽培尚未普及，采摘方式原始简单；</li>
+                        <li><strong>认知记载零散</strong>：有关茶的记载散见于《诗经》《尔雅》等文献，多描述植物特征而非饮用；</li>
+                        <li><strong>巴蜀茶事萌芽</strong>：周代已有"巴蜀贡茶"的官方记载，茶开始进入中原贵族视野；</li>
+                        <li><strong>加工方式简单</strong>：茶叶多为晒干或简单烤制，便于储存和运输。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-right scroll-animate">
+                <div class="right-card">
+                    <div class="img-box">
+                        <!-- 保持原图片链接不变 -->
+                        <img src="https://img1.baidu.com/it/u=61125222,2891117005&fm=253&fmt=auto&app=120&f=JPEG?w=525&h=291" alt="先秦茶事起源场景">
+                    </div>
+                </div>
+
+                <div class="right-card">
+                    <div class="highlight">
+                        <p><strong>先秦茶俗历史意义</strong>：先秦时期是中华茶文化的"史前阶段"，茶的价值集中在实用层面。这一时期完成了从"野生植物"到"人类利用物"的关键转变，为后世茶文化的发展奠定了物质基础。尽管尚未形成独立的文化体系，但茶的药用、食用价值已被认知，开启了华夏民族与茶相伴数千年的历史序幕。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn-container">
+        <a href="index.html" class="btn"><i class="fas fa-arrow-left"></i> 返回茶俗馆首页</a>
+    </div>
+
+    <audio id="bgm-audio" loop preload="auto">
+        <source src="bgm/xianqinbgm.mp3" type="audio/mpeg">
+        您的浏览器不支持音频播放，请更换现代浏览器。
+    </audio>
+
+    <div class="audio-control">
+        <button class="audio-btn" id="audio-play-btn">
+            <i class="fas fa-leaf"></i>
+        </button>
+    </div>
+
+    <script>
+        const audio = document.getElementById('bgm-audio');
+        const playBtn = document.getElementById('audio-play-btn');
+        let isPlaying = false;
+        audio.volume = 0.6;
+
+        playBtn.addEventListener('click', async () => {
+            try {
+                if (!isPlaying) {
+                    await audio.play();
+                    isPlaying = true;
+                    playBtn.style.transform = "scale(1.08) rotate(5deg)"; // 简化动画
+                    playBtn.style.animation = "pulse 2s infinite"; // 简化呼吸动画
+                } else {
+                    audio.pause();
+                    isPlaying = false;
+                    playBtn.style.transform = "scale(1) rotate(0)";
+                    playBtn.style.animation = "";
+                }
+            } catch (err) {
+                alert(`音乐播放失败：\n1. 检查文件路径：是否存在\n2. 错误详情：${err.message}`);
+                console.log('音频路径检测：', audio.currentSrc);
+            }
+        });
+
+        document.addEventListener('click', () => {
+            if (audio.paused && !isPlaying) {
+                audio.play().catch(() => {});
+            }
+        }, { once: true });
+
+        const animateElements = document.querySelectorAll('.scroll-animate');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        animateElements.forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
